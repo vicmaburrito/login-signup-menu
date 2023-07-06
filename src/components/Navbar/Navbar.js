@@ -29,6 +29,24 @@ export default function CustomNavbar() {
             <h3 className="text-dark">Home</h3>
           </Link>
         </li>
+        <li className="nav-item">
+          <Link
+            to="/Login"
+            onClick={() => closeMenu()}
+            className="text-decoration-none"
+          >
+            <h3 className="text-dark">Login</h3>
+          </Link>
+        </li>
+        <li className="nav-item">
+          <Link
+            to="/SignUp"
+            onClick={() => closeMenu()}
+            className="text-decoration-none"
+          >
+            <h3 className="text-dark">SignUp</h3>
+          </Link>
+        </li>
       </ul>
     </Menu>
   );
