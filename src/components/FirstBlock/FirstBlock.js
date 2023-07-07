@@ -25,9 +25,9 @@ function FirstBlock({ userName, logout }) {
           minHeight: 200.00,
           minWidth: 200.00,
           highlightColor: 0xf7f7f7,
-          midtoneColor: 0x9dc567,
+          midtoneColor: 0x000000,
           lowlightColor: 0xfffff,
-          baseColor: 0x064635,
+          baseColor: 0xf7f7f7,
           blurFactor: 0.28,
           speed: 2.90,
           zoom: 1.80,
@@ -41,18 +41,18 @@ function FirstBlock({ userName, logout }) {
   return (
     <section className="masthead d-flex align-items-center" ref={myRef}>
       <div className="container px-4 px-lg-5 text-center scale-down-center">
-        <h1 className="mb-1 display-4 text-white">Auth Application</h1>
+        <h1 className="mb-1 display-4 outfit color-152062">Auth Application</h1>
         <>
           {userName ? (
             <>
-              <h3 className="mb-5 text-white">
+              <h3 className="mb-5 outfit color-152062">
                 <em>
                   Welcome,
                   {userName}
                   !
                 </em>
               </h3>
-              <button type="button" className="btn btn-dark" onClick={handleLogout}>Logout</button>
+              <button type="button" className="btn text-white" onClick={handleLogout}>Logout</button>
             </>
           ) : null}
         </>

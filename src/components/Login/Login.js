@@ -26,12 +26,12 @@ const Login = ({ loginRequest, loading, error }) => {
   return (
     <div className="d-flex align-items-center">
       <div className="container p-5">
-        <h2 className="text-center mb-5 outfit">Login</h2>
+        <h2 className="text-center mb-5 outfit color-152062">Login</h2>
         <form onSubmit={handleSubmit}>
           <div className="form-group">
             <input
               type="email"
-              className="form-control mb-4 outfit"
+              className="form-control mb-4 outfit border-color"
               id="email"
               value={email}
               onChange={handleChangeEmail}
@@ -58,7 +58,7 @@ const Login = ({ loginRequest, loading, error }) => {
             {error}
           </p>
           )}
-          <button type="submit" className="btn btn-primary px-5">Login</button>
+          <button type="submit" className="btn text-white px-5">Login</button>
         </form>
       </div>
     </div>

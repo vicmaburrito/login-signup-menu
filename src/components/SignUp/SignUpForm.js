@@ -20,6 +20,8 @@ const SignUpForm = () => {
   const [modalBody, setModalBody] = useState('');
   const [isValidEmail, setIsValidEmail] = useState(true);
   const [setProfile] = useState(null);
+  const facebookAppId = process.env.FACEBOOK_APP_ID;
+  const googleClientId = process.env.GOOGLE_CLIENT_ID;
 
   const handleChangeEmail = (event) => {
     setEmail(event.target.value);
@@ -73,7 +75,7 @@ const SignUpForm = () => {
       </Modal>
       <div className="d-flex align-items-center">
         <div className="container p-5">
-          <h2 className="text-center mb-5 outfit">Sign Up</h2>
+          <h2 className="text-center mb-5 outfit color-152062">Sign Up</h2>
           <form>
             <div className="form-group">
               <input type="text" value={name} onChange={handleChangeName} className="form-control mb-4 outfit" id="name" placeholder="Name" required />
@@ -90,13 +92,13 @@ const SignUpForm = () => {
               <input type="password" value={password} onChange={handleChangePass} className="form-control mb-4 outfit" id="password" placeholder="Password" required />
             </div>
             <div className="text-center mb-3">
-              <button type="submit" onClick={handleSubmit} className="btn btn-primary px-5">Submit</button>
+              <button type="submit" onClick={handleSubmit} className="btn text-white px-5">Submit</button>
             </div>
-            <p className="text-muted text-center">or sign up with:</p>
+            <p className="text-center color-1a75c3">or sign up with:</p>
             <div className="text-center d-flex justify-content-center">
               <div className="w-50">
                 <LoginSocialFacebook
-                  appId={process.env.FACEBOOK_APP_ID}
+                  appId={facebookAppId}
                   onResolve={(response) => {
                     setProfile(response.data);
                   }}
@@ -111,7 +113,7 @@ const SignUpForm = () => {
             <div className="text-center d-flex justify-content-center">
               <div className="w-50">
                 <LoginSocialGoogle
-                  client_id={process.env.GOOGLE_CLIENT_ID}
+                  client_id={googleClientId}
                   scope="openid profile email"
                   discoveryDocs="claims_supported"
                   access_type="offline"

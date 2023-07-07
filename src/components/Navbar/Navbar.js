@@ -26,7 +26,7 @@ export default function CustomNavbar() {
             onClick={() => closeMenu()}
             className="text-decoration-none"
           >
-            <h3 className="text-dark">Home</h3>
+            <h3 className="outfit color-152062">Home</h3>
           </Link>
         </li>
         <li className="nav-item">
@@ -35,16 +35,16 @@ export default function CustomNavbar() {
             onClick={() => closeMenu()}
             className="text-decoration-none"
           >
-            <h3 className="text-dark">Login</h3>
+            <h3 className="outfit color-152062">Login</h3>
           </Link>
         </li>
         <li className="nav-item">
           <Link
             to="/SignUp"
             onClick={() => closeMenu()}
-            className="text-decoration-none"
+            className="text-decoration-none "
           >
-            <h3 className="text-dark">SignUp</h3>
+            <h3 className="outfit color-152062">SignUp</h3>
           </Link>
         </li>
       </ul>
