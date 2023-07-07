@@ -8,6 +8,7 @@ import db from '../firebase/firebase-config';
 const SignUpForm = () => {
   const [email, setEmail] = useState('');
   const [name, setName] = useState('');
+  const [password, setPassword] = useState('');
   const [show, setShow] = useState(false);
   const [modalTitle, setModalTitle] = useState('');
   const [modalBody, setModalBody] = useState('');
@@ -21,14 +22,18 @@ const SignUpForm = () => {
     setName(event.target.value);
   };
 
+  const handleChangePass = (event) => {
+    setPassword(event.target.value);
+  };
+
   const handleSubmit = async (event) => {
     event.preventDefault();
     const validateEmailRx = /^\w+([.-]?\w+)*@(gmail|outlook|hotmail|yahoo)\.(com|co|es)$/.test(email);
     if (validateEmailRx) {
       try {
-        await addDoc(collection(db, 'users'), { email, name });
+        await addDoc(collection(db, 'users'), { email, name, password });
         setModalTitle('Welcome!');
-        setModalBody(email);
+        setModalBody(name);
         setIsValidEmail(true);
       } catch (e) {
         setIsValidEmail(false);
@@ -42,6 +47,8 @@ const SignUpForm = () => {
   const hideModal = () => {
     setShow(false);
     setEmail('');
+    setName('');
+    setPassword('');
   };
 
   return (
@@ -71,6 +78,10 @@ const SignUpForm = () => {
                   Please enter a valid email address.
                 </p>
               )}
+            </div>
+
+            <div className="form-group">
+              <input type="password" value={password} onChange={handleChangePass} className="form-control mb-4 outfit" id="password" placeholder="password" />
             </div>
             <div className="text-center mb-3">
               <button type="submit" onClick={handleSubmit} className="btn btn-primary px-5">Submit</button>
