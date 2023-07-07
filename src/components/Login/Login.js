@@ -1,11 +1,13 @@
 import React, { useState } from 'react';
 import { connect } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 import { loginRequest } from '../Redux/actions/LoginAction';
 
 // eslint-disable-next-line react/prop-types
 const Login = ({ loginRequest, loading, error }) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const navigate = useNavigate();
 
   const handleChangeEmail = (event) => {
     setEmail(event.target.value);
@@ -18,6 +20,7 @@ const Login = ({ loginRequest, loading, error }) => {
   const handleSubmit = (event) => {
     event.preventDefault();
     loginRequest(email, password);
+    navigate('/', { replace: true });
   };
 
   return (

@@ -1,11 +1,18 @@
 import React, { useState, useEffect, useRef } from 'react';
 import FOG from 'vanta/dist/vanta.fog.min';
 import * as THREE from 'three';
+import { connect } from 'react-redux';
+import { logout } from '../Redux/actions/LoginAction';
 import './FirstBlock.css';
 
-function FirstBlock() {
+// eslint-disable-next-line react/prop-types
+function FirstBlock({ userName, logout }) {
   const [vantaEffect, setVantaEffect] = useState(0);
   const myRef = useRef(null);
+  const handleLogout = () => {
+    logout();
+  };
+
   useEffect(() => {
     if (!vantaEffect) {
       setVantaEffect(
@@ -35,10 +42,27 @@ function FirstBlock() {
     <section className="masthead d-flex align-items-center" ref={myRef}>
       <div className="container px-4 px-lg-5 text-center scale-down-center">
         <h1 className="mb-1 display-4 text-white">Auth Application</h1>
-        <h3 className="mb-5 text-white"><em>by Manuel Aldaraca</em></h3>
+        <>
+          {userName ? (
+            <>
+              <h3 className="mb-5 text-white">
+                <em>
+                  Welcome,
+                  {userName}
+                  !
+                </em>
+              </h3>
+              <button type="button" className="btn btn-dark" onClick={handleLogout}>Logout</button>
+            </>
+          ) : null}
+        </>
       </div>
     </section>
   );
 }
 
-export default FirstBlock;
+const mapStateToProps = (state) => ({
+  userName: state.login.user && state.login.user.name,
+});
+
+export default connect(mapStateToProps, { logout })(FirstBlock);
