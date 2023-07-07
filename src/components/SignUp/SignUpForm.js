@@ -1,6 +1,12 @@
 import React, { useState } from 'react';
+// eslint-disable-next-line import/no-extraneous-dependencies
 import Modal from 'react-bootstrap/Modal';
+// eslint-disable-next-line import/no-extraneous-dependencies
 import Button from 'react-bootstrap/Button';
+// eslint-disable-next-line import/no-extraneous-dependencies
+import { LoginSocialFacebook, LoginSocialGoogle } from 'reactjs-social-login';
+// eslint-disable-next-line import/no-extraneous-dependencies
+import { FacebookLoginButton, GoogleLoginButton } from 'react-social-login-buttons';
 
 import { collection, addDoc } from 'firebase/firestore';
 import db from '../firebase/firebase-config';
@@ -13,6 +19,7 @@ const SignUpForm = () => {
   const [modalTitle, setModalTitle] = useState('');
   const [modalBody, setModalBody] = useState('');
   const [isValidEmail, setIsValidEmail] = useState(true);
+  const [setProfile] = useState(null);
 
   const handleChangeEmail = (event) => {
     setEmail(event.target.value);
@@ -85,14 +92,39 @@ const SignUpForm = () => {
             <div className="text-center mb-3">
               <button type="submit" onClick={handleSubmit} className="btn btn-primary px-5">Submit</button>
             </div>
-            <div className="text-center">
-              <p className="text-muted">or sign up with:</p>
-              <button type="button" className="btn btn-secondary mx-1">
-                <i className="bi bi-facebook" />
-              </button>
-              <button type="button" className="btn btn-secondary mx-1">
-                <i className="bi bi-google" />
-              </button>
+            <p className="text-muted text-center">or sign up with:</p>
+            <div className="text-center d-flex justify-content-center">
+              <div className="w-50">
+                <LoginSocialFacebook
+                  appId={process.env.FACEBOOK_APP_ID}
+                  onResolve={(response) => {
+                    setProfile(response.data);
+                  }}
+                  onReject={(error) => {
+                    console.log(error);
+                  }}
+                >
+                  <FacebookLoginButton />
+                </LoginSocialFacebook>
+              </div>
+            </div>
+            <div className="text-center d-flex justify-content-center">
+              <div className="w-50">
+                <LoginSocialGoogle
+                  client_id={process.env.GOOGLE_CLIENT_ID}
+                  scope="openid profile email"
+                  discoveryDocs="claims_supported"
+                  access_type="offline"
+                  onResolve={({ provider, data }) => {
+                    console.log(provider, data);
+                  }}
+                  onReject={(err) => {
+                    console.log(err);
+                  }}
+                >
+                  <GoogleLoginButton />
+                </LoginSocialGoogle>
+              </div>
             </div>
           </form>
         </div>
