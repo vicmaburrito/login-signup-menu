@@ -4,10 +4,12 @@ import {
 import logger from 'redux-logger';
 import thunk from 'redux-thunk';
 
-import { usersReducer } from './UsersFetch';
+import { usersReducer } from './actions/UsersFetch';
+import { loginReducer } from './actions/LoginAction';
 
 const reducer = combineReducers({
-  usersReducer,
+  users: usersReducer,
+  login: loginReducer,
 });
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;

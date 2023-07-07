@@ -1,6 +1,6 @@
 import { collection, getDocs } from 'firebase/firestore';
 import { v4 as uuidv4 } from 'uuid';
-import db from '../firebase/firebase-config';
+import db from '../../firebase/firebase-config';
 
 const GET_USERS = 'GET_USERS';
 const GET_USERS_SUCCESS = 'GET_USERS_SUCCESS';

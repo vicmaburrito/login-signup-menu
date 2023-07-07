@@ -60,7 +60,7 @@ const SignUpForm = () => {
         <Modal.Body>{modalBody}</Modal.Body>
         <Modal.Footer>
           <Button variant="primary" onClick={hideModal}>
-            Aceptar
+            Accept
           </Button>
         </Modal.Footer>
       </Modal>
@@ -72,16 +72,15 @@ const SignUpForm = () => {
               <input type="text" value={name} onChange={handleChangeName} className="form-control mb-4 outfit" id="name" placeholder="Name" required />
             </div>
             <div className="form-group">
-              <input type="email" value={email} onChange={handleChangeEmail} className="form-control mb-4 outfit" id="email" placeholder="Email" />
+              <input type="email" value={email} onChange={handleChangeEmail} className="form-control mb-4 outfit" id="email" placeholder="Email" required />
               {!isValidEmail && (
                 <p className="text-danger mt-2">
                   Please enter a valid email address.
                 </p>
               )}
             </div>
-
             <div className="form-group">
-              <input type="password" value={password} onChange={handleChangePass} className="form-control mb-4 outfit" id="password" placeholder="password" />
+              <input type="password" value={password} onChange={handleChangePass} className="form-control mb-4 outfit" id="password" placeholder="Password" required />
             </div>
             <div className="text-center mb-3">
               <button type="submit" onClick={handleSubmit} className="btn btn-primary px-5">Submit</button>
