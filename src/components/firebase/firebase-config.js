@@ -1,6 +1,4 @@
-// eslint-disable-next-line import/no-extraneous-dependencies
 import { initializeApp } from 'firebase/app';
-// eslint-disable-next-line import/no-extraneous-dependencies
 import { getFirestore } from 'firebase/firestore';
 
 const firebaseConfig = {
@@ -17,8 +15,6 @@ const firebaseConfig = {
 
   appId: process.env.REACT_APP_APP_ID,
 
-  measurementId: process.env.REACT_APP_MEASUREMENT_ID,
-
 };
 
 const app = initializeApp(firebaseConfig);
@@ -26,3 +22,5 @@ const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
 
 export default db;
+
+// TODO: ADD REDUX AND CONNECT WITH FACEBOOK
