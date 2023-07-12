@@ -46,7 +46,7 @@ const Login = ({ loginRequest, loading, error }) => {
                 onChange={handleChangeEmail}
                 required
               />
-              <span className="input-group-text input-form-auth" id="password">
+              <span className="input-group-text input-form-auth" id="email">
                 <i className="bi bi-envelope-open-fill" />
               </span>
             </div>
