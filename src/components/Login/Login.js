@@ -30,27 +30,37 @@ const Login = ({ loginRequest, loading, error }) => {
       <div className="container p-5">
         <h2 className="text-center mb-5 outfit color-152062">Login</h2>
         <form onSubmit={handleSubmit}>
-          <div className="form-group">
+          <div className="form-group mb-4">
             <span className="px-1 color-152062">Email</span>
-            <input
-              type="email"
-              className="input-form-auth form-control mb-4 outfit border-color"
-              id="email"
-              value={email}
-              onChange={handleChangeEmail}
-              required
-            />
+            <div className="input-group">
+              <input
+                type="email"
+                className="input-form-auth form-control outfit border-color"
+                id="email"
+                value={email}
+                onChange={handleChangeEmail}
+                required
+              />
+              <span className="input-group-text input-form-auth" id="password">
+                <i className="bi bi-envelope-open-fill" />
+              </span>
+            </div>
           </div>
           <div className="form-group">
             <span className="px-1 color-152062">Contraseña</span>
-            <input
-              type="password"
-              className="input-form-auth form-control mb-4 outfit"
-              id="password"
-              value={password}
-              onChange={handleChangePassword}
-              required
-            />
+            <div className="input-group">
+              <input
+                type="password"
+                className="input-form-auth form-control outfit"
+                id="password"
+                value={password}
+                onChange={handleChangePassword}
+                required
+              />
+              <span className="input-group-text input-form-auth" id="password">
+                <i className="bi bi-eye-fill" />
+              </span>
+            </div>
           </div>
           {loading && <p>Loading...</p>}
           {error
@@ -60,7 +70,7 @@ const Login = ({ loginRequest, loading, error }) => {
             {error}
           </p>
           )}
-          <div className="d-flex justify-content-center">
+          <div className="d-flex justify-content-center mt-5">
             <button type="submit" className="btn btn-default-style text-white login-btn px-5">Iniciar sesión</button>
           </div>
           <div className="d-flex justify-content-center mt-4">
@@ -77,7 +87,7 @@ const Login = ({ loginRequest, loading, error }) => {
               Mantener sesión iniciada
             </p>
           </div>
-          <div className="d-flex justify-content-center mt-5">
+          <div className="d-flex justify-content-center mt-4">
             <p className="text-muted"> Ó registrate con: </p>
           </div>
           <AuthApps />
