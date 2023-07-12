@@ -12,6 +12,8 @@ const SignUpForm = () => {
   const [rfc, setRfc] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [confirmPassword, setConfirmPassword] = useState('');
+  const [passwordMatch, setPasswordMatch] = useState(true);
   const [show, setShow] = useState(false);
   const [modalTitle, setModalTitle] = useState('');
   const [modalBody, setModalBody] = useState('');
@@ -43,20 +45,25 @@ const SignUpForm = () => {
     setShowPassword(!showPassword);
   };
 
+  const handleChangeConfirmPass = (event) => {
+    setConfirmPassword(event.target.value);
+  };
+
   const handleSubmit = async (event) => {
     event.preventDefault();
     const validateEmailRx = /^\w+([.-]?\w+)*@(gmail|outlook|hotmail|yahoo)\.(com|co|es)$/.test(email);
-    if (validateEmailRx) {
+    if (validateEmailRx && password === confirmPassword) {
       try {
         await addDoc(collection(db, 'users'), { email, name, password });
-        setModalTitle('Hola, Bienvenido!');
-        setModalBody(name);
+        setModalTitle('Bienvenido!');
+        setModalBody(`${name} Inicia sesión para continuar`);
         setIsValidEmail(true);
       } catch (e) {
         setIsValidEmail(false);
       }
       setShow(true);
     } else {
+      setPasswordMatch(false);
       setIsValidEmail(false);
     }
   };
@@ -66,7 +73,7 @@ const SignUpForm = () => {
     setEmail('');
     setName('');
     setPassword('');
-    navigate('/', { replace: true });
+    navigate('/Login', { replace: true });
   };
 
   return (
@@ -78,7 +85,7 @@ const SignUpForm = () => {
         <Modal.Body>{modalBody}</Modal.Body>
         <Modal.Footer>
           <Button className="btn btn-default-style text-white" onClick={hideModal}>
-            Aceptar
+            Iniciar sesión
           </Button>
         </Modal.Footer>
       </Modal>
@@ -206,6 +213,8 @@ const SignUpForm = () => {
                 <input
                   type={showPassword ? 'text' : 'password'}
                   className="input-form-auth form-control outfit"
+                  value={confirmPassword}
+                  onChange={handleChangeConfirmPass}
                   id="password"
                   placeholder="Confirmar contraseña"
                 />
@@ -218,6 +227,7 @@ const SignUpForm = () => {
                   <i className={`bi ${showPassword ? 'bi-eye-slash-fill' : 'bi-eye-fill'}`} />
                 </button>
               </div>
+              {!passwordMatch && <p className="text-danger outfit">Las contraseñas no coinciden</p>}
             </div>
             <div className="form-check d-flex justify-content-center">
               <input className="form-check-input px-2" type="checkbox" id="mexicana" />
