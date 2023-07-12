@@ -6,8 +6,10 @@ import db from '../firebase/firebase-config';
 import './SignUp.css';
 
 const SignUpForm = () => {
-  const [email, setEmail] = useState('');
   const [name, setName] = useState('');
+  const [lastName, setlastName] = useState('');
+  const [rfc, setRfc] = useState('');
+  const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [show, setShow] = useState(false);
   const [modalTitle, setModalTitle] = useState('');
@@ -17,6 +19,14 @@ const SignUpForm = () => {
 
   const handleChangeEmail = (event) => {
     setEmail(event.target.value);
+  };
+
+  const handleChangeLastName = (event) => {
+    setlastName(event.target.value);
+  };
+
+  const handleChangeRfc = (event) => {
+    setRfc(event.target.value);
   };
 
   const handleChangeName = (event) => {
@@ -93,10 +103,11 @@ const SignUpForm = () => {
               <div className="input-group">
                 <input
                   type="text"
+                  value={lastName}
+                  onChange={handleChangeLastName}
                   className="input-form-auth form-control outfit"
                   id="apellidos"
                   placeholder="Apellidos"
-                  required
                 />
                 <span className="input-group-text input-form-auth" id="apellidos">
                   <i className="bi bi-person-circle" />
@@ -107,17 +118,18 @@ const SignUpForm = () => {
               <div className="input-group">
                 <input
                   type="text"
+                  value={rfc}
+                  onChange={handleChangeRfc}
                   className="input-form-auth form-control outfit"
                   id="rfc"
                   placeholder="RFC"
-                  required
                 />
                 <span className="input-group-text input-form-auth" id="rfc">
                   <i className="bi bi-person-vcard-fill" />
                 </span>
               </div>
               <div className="d-flex justify-content-end">
-                <span className="rfc-info-text text-muted">
+                <span className="rfc-info-text text-muted outfit">
                   ¿No sabes tu RFC? Consúltalo&nbsp;
                   <a
                     href="https://www.sat.gob.mx/aplicacion/operacion/31274/consulta-tu-clave-de-rfc-mediante-curp"
@@ -160,7 +172,7 @@ const SignUpForm = () => {
                 </span>
               </div>
               {!isValidEmail && (
-                <p className="text-danger mt-2">
+                <p className="text-danger mt-2 outfit">
                   Please enter a valid email address.
                 </p>
               )}
@@ -193,7 +205,6 @@ const SignUpForm = () => {
                   className="input-form-auth form-control outfit"
                   id="password"
                   placeholder="Confirmar contraseña"
-                  required
                 />
                 <button
                   type="button"
@@ -207,7 +218,7 @@ const SignUpForm = () => {
             </div>
             <div className="form-check d-flex justify-content-center">
               <input className="form-check-input px-2" type="checkbox" id="mexicana" />
-              <p className="mx-1 rfc-info-text text-muted">
+              <p className="mx-1 rfc-info-text text-muted outfit">
                 Estoy de acuerdo con los&nbsp;
                 <a href="#terminos" className="color-1a75c3">
                   Términos y condiciones

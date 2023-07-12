@@ -36,7 +36,7 @@ const Login = ({ loginRequest, loading, error }) => {
         <h2 className="text-center mb-5 outfit color-152062">Login</h2>
         <form onSubmit={handleSubmit}>
           <div className="form-group mb-4">
-            <span className="px-1 color-152062">Email</span>
+            <span className="px-1 color-152062 outfit">Email</span>
             <div className="input-group">
               <input
                 type="email"
@@ -52,7 +52,7 @@ const Login = ({ loginRequest, loading, error }) => {
             </div>
           </div>
           <div className="form-group">
-            <span className="px-1 color-152062">Contraseña</span>
+            <span className="px-1 color-152062 outfit">Contraseña</span>
             <div className="input-group">
               <input
                 type={showPassword ? 'text' : 'password'}
@@ -81,7 +81,7 @@ const Login = ({ loginRequest, loading, error }) => {
           </p>
           )}
           <div className="d-flex justify-content-center mt-5">
-            <button type="submit" className="btn btn-default-style text-white login-btn px-5">Iniciar sesión</button>
+            <button type="submit" className="btn btn-default-style text-white login-btn px-5 outfit">Iniciar sesión</button>
           </div>
           <div className="d-flex justify-content-center mt-4">
             <Link
@@ -93,12 +93,12 @@ const Login = ({ loginRequest, loading, error }) => {
           </div>
           <div className="form-check d-flex justify-content-center mt-5">
             <input className="form-check-input me-2" type="checkbox" value="" id="sesion" />
-            <p className="text-muted">
+            <p className="text-muted outfit">
               Mantener sesión iniciada
             </p>
           </div>
           <div className="d-flex justify-content-center mt-4">
-            <p className="text-muted"> Ó registrate con: </p>
+            <p className="text-muted outfit"> Ó registrate con: </p>
           </div>
           <AuthApps />
         </form>
