@@ -1,0 +1,9 @@
+.rfc-info-text {
+  font-size: 11px;
+}
+
+@media (min-width: 992px) {
+  .rfc-info-text {
+    font-size: 13px;
+  }
+}
