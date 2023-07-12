@@ -1,0 +1,15 @@
+.login-btn {
+  width: 100%;
+}
+
+@media (min-width: 992px) {
+  .login-btn {
+    width: 20%;
+  }
+}
+
+.link-signup {
+  font-weight: 900;
+  font-size: 15px;
+  letter-spacing: 2px;
+}
