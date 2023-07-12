@@ -33,7 +33,7 @@ const Login = ({ loginRequest, loading, error }) => {
   return (
     <div className="d-flex align-items-center">
       <div className="container p-5">
-        <h2 className="text-center mb-5 outfit color-152062">Login</h2>
+        <h2 className="text-center mb-5 outfit color-152062">Iniciar sesión</h2>
         <form onSubmit={handleSubmit}>
           <div className="form-group mb-4">
             <span className="px-1 color-152062 outfit">Email</span>

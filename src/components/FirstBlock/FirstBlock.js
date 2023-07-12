@@ -47,7 +47,7 @@ function FirstBlock({ userName, logout }) {
             <>
               <h3 className="mb-5 outfit color-152062">
                 <em>
-                  Welcome,
+                  Bienvenido(a),
                   {userName}
                   !
                 </em>

@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import Modal from 'react-bootstrap/Modal';
 import Button from 'react-bootstrap/Button';
 import { collection, addDoc } from 'firebase/firestore';
@@ -16,6 +17,7 @@ const SignUpForm = () => {
   const [modalBody, setModalBody] = useState('');
   const [isValidEmail, setIsValidEmail] = useState(true);
   const [showPassword, setShowPassword] = useState(false);
+  const navigate = useNavigate();
 
   const handleChangeEmail = (event) => {
     setEmail(event.target.value);
@@ -47,7 +49,7 @@ const SignUpForm = () => {
     if (validateEmailRx) {
       try {
         await addDoc(collection(db, 'users'), { email, name, password });
-        setModalTitle('Welcome!');
+        setModalTitle('Hola, Bienvenido!');
         setModalBody(name);
         setIsValidEmail(true);
       } catch (e) {
@@ -64,24 +66,25 @@ const SignUpForm = () => {
     setEmail('');
     setName('');
     setPassword('');
+    navigate('/', { replace: true });
   };
 
   return (
     <>
       <Modal show={show} onHide={hideModal} contentClassName="modal-small">
-        <Modal.Header closeButton>
+        <Modal.Header>
           <Modal.Title>{modalTitle}</Modal.Title>
         </Modal.Header>
         <Modal.Body>{modalBody}</Modal.Body>
         <Modal.Footer>
-          <Button variant="primary" onClick={hideModal}>
-            Accept
+          <Button className="btn btn-default-style text-white" onClick={hideModal}>
+            Aceptar
           </Button>
         </Modal.Footer>
       </Modal>
       <div className="d-flex align-items-center">
         <div className="container p-5">
-          <h2 className="text-center mb-5 outfit color-152062">Sign Up</h2>
+          <h2 className="text-center mb-5 outfit color-152062">Regístrate</h2>
           <form>
             <div className="form-group mb-4">
               <div className="input-group">
