@@ -12,7 +12,7 @@
   color: #1a75c3;
 }
 
-input {
+.input-form-auth {
   border: solid 1px rgba(26, 117, 195, 0.4) !important;
   background-color: rgba(69, 169, 255, 0.1) !important;
 }

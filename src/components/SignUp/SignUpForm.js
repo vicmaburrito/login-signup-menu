@@ -1,11 +1,7 @@
 import React, { useState } from 'react';
-// eslint-disable-next-line import/no-extraneous-dependencies
 import Modal from 'react-bootstrap/Modal';
-// eslint-disable-next-line import/no-extraneous-dependencies
 import Button from 'react-bootstrap/Button';
-// eslint-disable-next-line import/no-extraneous-dependencies
 import { LoginSocialFacebook, LoginSocialGoogle } from 'reactjs-social-login';
-// eslint-disable-next-line import/no-extraneous-dependencies
 import { FacebookLoginButton, GoogleLoginButton } from 'react-social-login-buttons';
 
 import { collection, addDoc } from 'firebase/firestore';
@@ -78,10 +74,10 @@ const SignUpForm = () => {
           <h2 className="text-center mb-5 outfit color-152062">Sign Up</h2>
           <form>
             <div className="form-group">
-              <input type="text" value={name} onChange={handleChangeName} className="form-control mb-4 outfit" id="name" placeholder="Name" required />
+              <input type="text" value={name} onChange={handleChangeName} className="input-form-auth form-control mb-4 outfit" id="name" placeholder="Name" required />
             </div>
             <div className="form-group">
-              <input type="email" value={email} onChange={handleChangeEmail} className="form-control mb-4 outfit" id="email" placeholder="Email" required />
+              <input type="email" value={email} onChange={handleChangeEmail} className="input-form-auth form-control mb-4 outfit" id="email" placeholder="Email" required />
               {!isValidEmail && (
                 <p className="text-danger mt-2">
                   Please enter a valid email address.
@@ -89,7 +85,7 @@ const SignUpForm = () => {
               )}
             </div>
             <div className="form-group">
-              <input type="password" value={password} onChange={handleChangePass} className="form-control mb-4 outfit" id="password" placeholder="Password" required />
+              <input type="password" value={password} onChange={handleChangePass} className="input-form-auth form-control mb-4 outfit" id="password" placeholder="Password" required />
             </div>
             <div className="text-center mb-3">
               <button type="submit" onClick={handleSubmit} className="btn text-white px-5">Submit</button>
