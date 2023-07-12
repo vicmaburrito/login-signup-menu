@@ -1,11 +1,9 @@
 import React, { useState } from 'react';
 import Modal from 'react-bootstrap/Modal';
 import Button from 'react-bootstrap/Button';
-import { LoginSocialFacebook, LoginSocialGoogle } from 'reactjs-social-login';
-import { FacebookLoginButton, GoogleLoginButton } from 'react-social-login-buttons';
-
 import { collection, addDoc } from 'firebase/firestore';
 import db from '../firebase/firebase-config';
+import AuthApps from '../shared/AuthApps';
 
 const SignUpForm = () => {
   const [email, setEmail] = useState('');
@@ -15,9 +13,6 @@ const SignUpForm = () => {
   const [modalTitle, setModalTitle] = useState('');
   const [modalBody, setModalBody] = useState('');
   const [isValidEmail, setIsValidEmail] = useState(true);
-  const [setProfile] = useState(null);
-  const facebookAppId = process.env.FACEBOOK_APP_ID;
-  const googleClientId = process.env.GOOGLE_CLIENT_ID;
 
   const handleChangeEmail = (event) => {
     setEmail(event.target.value);
@@ -91,39 +86,7 @@ const SignUpForm = () => {
               <button type="submit" onClick={handleSubmit} className="btn text-white px-5">Submit</button>
             </div>
             <p className="text-center color-1a75c3">or sign up with:</p>
-            <div className="text-center d-flex justify-content-center">
-              <div className="w-50">
-                <LoginSocialFacebook
-                  appId={facebookAppId}
-                  onResolve={(response) => {
-                    setProfile(response.data);
-                  }}
-                  onReject={(error) => {
-                    console.log(error);
-                  }}
-                >
-                  <FacebookLoginButton />
-                </LoginSocialFacebook>
-              </div>
-            </div>
-            <div className="text-center d-flex justify-content-center">
-              <div className="w-50">
-                <LoginSocialGoogle
-                  client_id={googleClientId}
-                  scope="openid profile email"
-                  discoveryDocs="claims_supported"
-                  access_type="offline"
-                  onResolve={({ provider, data }) => {
-                    console.log(provider, data);
-                  }}
-                  onReject={(err) => {
-                    console.log(err);
-                  }}
-                >
-                  <GoogleLoginButton />
-                </LoginSocialGoogle>
-              </div>
-            </div>
+            <AuthApps />
           </form>
         </div>
       </div>

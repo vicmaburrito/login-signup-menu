@@ -9,6 +9,7 @@ import './Login.css';
 const Login = ({ loginRequest, loading, error }) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [showPassword, setShowPassword] = useState(false);
   const navigate = useNavigate();
 
   const handleChangeEmail = (event) => {
@@ -23,6 +24,10 @@ const Login = ({ loginRequest, loading, error }) => {
     event.preventDefault();
     loginRequest(email, password);
     navigate('/', { replace: true });
+  };
+
+  const toggleShowPassword = () => {
+    setShowPassword(!showPassword);
   };
 
   return (
@@ -50,16 +55,21 @@ const Login = ({ loginRequest, loading, error }) => {
             <span className="px-1 color-152062">Contraseña</span>
             <div className="input-group">
               <input
-                type="password"
+                type={showPassword ? 'text' : 'password'}
                 className="input-form-auth form-control outfit"
                 id="password"
                 value={password}
                 onChange={handleChangePassword}
                 required
               />
-              <span className="input-group-text input-form-auth" id="password">
-                <i className="bi bi-eye-fill" />
-              </span>
+              <button
+                type="button"
+                className="input-group-text input-form-auth"
+                id="password"
+                onClick={toggleShowPassword}
+              >
+                <i className={`bi ${showPassword ? 'bi-eye-slash-fill' : 'bi-eye-fill'}`} />
+              </button>
             </div>
           </div>
           {loading && <p>Loading...</p>}
